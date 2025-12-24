@@ -53,7 +53,7 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({
 
                 {/* Wheel */}
                 <motion.div
-                    className="relative w-full h-full rounded-full shadow-2xl overflow-hidden"
+                    className="relative w-full h-full rounded-full shadow-2xl overflow-hidden border-4 border-amber-400/30"
                     style={{
                         background: `conic-gradient(
               ${participants
@@ -67,41 +67,43 @@ const SpinningWheel: React.FC<SpinningWheelProps> = ({
                     }}
                     animate={
                         isSpinning
-                            ? { rotate: 360 }
-                            : { rotate: -(currentIndex * segmentAngle) }
+                            ? { rotate: 360 * 5 } // Spin multiple times
+                            : { rotate: -(currentIndex * segmentAngle) - (segmentAngle / 2) }
                     }
                     transition={
                         isSpinning
-                            ? { duration: 0.5, repeat: Infinity, ease: 'linear' }
-                            : { duration: 0.5, ease: 'easeOut' }
+                            ? { duration: 0.8, repeat: Infinity, ease: 'linear' }
+                            : { duration: 1.5, ease: 'easeOut' }
                     }
                 >
-                    {/* Center Circle */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-20 h-20 bg-amber-400 rounded-full shadow-lg flex items-center justify-center">
-                            <Gift className="w-10 h-10 text-slate-900" />
-                        </div>
-                    </div>
-
                     {/* Participant Names */}
                     {participants.map((participant, index) => {
                         const angle = (index * segmentAngle) + (segmentAngle / 2);
-                        const radius = 120; // Distance from center
-                        const x = Math.cos((angle * Math.PI) / 180) * radius;
-                        const y = Math.sin((angle * Math.PI) / 180) * radius;
 
                         return (
                             <div
                                 key={participant}
-                                className="absolute top-1/2 left-1/2 text-white font-bold text-sm md:text-base whitespace-nowrap"
+                                className="absolute top-0 left-1/2 -ml-[50%] w-full h-full flex justify-center pt-8 pointer-events-none"
                                 style={{
-                                    transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${angle + 90}deg)`,
+                                    transform: `rotate(${angle}deg)`,
+                                    transformOrigin: '50% 50%',
                                 }}
                             >
-                                {participant}
+                                <span className="text-white font-bold text-sm md:text-base drop-shadow-md transform rotate-0">
+                                    {participant}
+                                </span>
                             </div>
                         );
                     })}
+
+                    {/* Center Decoration */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-24 h-24 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center">
+                            <div className="w-16 h-16 bg-amber-400 rounded-full shadow-lg flex items-center justify-center">
+                                <Gift className="w-8 h-8 text-slate-900" />
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* Glow Effect */}
