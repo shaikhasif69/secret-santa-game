@@ -90,27 +90,56 @@ export async function POST(request: NextRequest) {
             // Build list of reserved targets from special pairings
             const reservedTargets = Object.values(SPECIAL_PAIRINGS);
 
-            // Build available pool: 
-            // 1. Not the current player
-            // 2. Not already assigned in the database
-            // 3. Not a reserved target for someone else
-            const availablePool = PARTICIPANTS.filter(
+            // 1. Initial candidates: not current player, not assigned to someone else, not reserved
+            let candidates = PARTICIPANTS.filter(
                 (p) =>
                     p !== name &&
                     !alreadyAssigned.includes(p) &&
                     !reservedTargets.includes(p)
             );
 
-            if (availablePool.length === 0) {
-                return NextResponse.json(
-                    { success: false, error: 'No participants available for assignment' },
-                    { status: 400 }
-                );
+            // 2. Deadlock Prevention: Look ahead to ensure remaining players have valid slots
+            const playersWhoPicked = await Participant.find({
+                isDemoMode: isDemoMode || false,
+                assignedTo: { $exists: true, $ne: null },
+            });
+            const namesWhoPicked = playersWhoPicked.map(p => p.name);
+
+            const remainingVoters = PARTICIPANTS.filter(p =>
+                !SPECIAL_PAIRINGS[p] &&
+                p !== name &&
+                !namesWhoPicked.includes(p)
+            );
+
+            if (remainingVoters.length > 0) {
+                // If we pick 'candidate', will the last remaining voter be left with themselves?
+                candidates = candidates.filter(candidate => {
+                    const nextAvailableTargets = PARTICIPANTS.filter(p =>
+                        !SPECIAL_PAIRINGS[p] &&
+                        !alreadyAssigned.includes(p) &&
+                        p !== candidate
+                    );
+
+                    if (remainingVoters.length === 1) {
+                        const lastVoter = remainingVoters[0];
+                        // If I pick this candidate, the 1 person left must have 1 target that isn't them
+                        return nextAvailableTargets.length === 1 && nextAvailableTargets[0] !== lastVoter;
+                    }
+
+                    // If 2 voters left, ensure at least one doesn't pick the other's only target? 
+                    // Actually, for 5 people, the 1-person lookahead is the most critical.
+                    return true;
+                });
+            }
+
+            if (candidates.length === 0) {
+                // Should not happen, but fallback to all available
+                candidates = PARTICIPANTS.filter(p => p !== name && !alreadyAssigned.includes(p) && !reservedTargets.includes(p));
             }
 
             // Randomly select from available pool
-            const randomIndex = Math.floor(Math.random() * availablePool.length);
-            assignedTo = availablePool[randomIndex];
+            const randomIndex = Math.floor(Math.random() * candidates.length);
+            assignedTo = candidates[randomIndex];
         }
 
         // Update participant with assignment
