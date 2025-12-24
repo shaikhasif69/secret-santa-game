@@ -85,10 +85,15 @@ export async function POST(request: NextRequest) {
             },
             message: 'Character selected successfully',
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error selecting character:', error);
         return NextResponse.json(
-            { success: false, error: 'Failed to select character' },
+            {
+                success: false,
+                error: 'Failed to select character',
+                details: error.message,
+                stack: error.stack
+            },
             { status: 500 }
         );
     }
