@@ -23,6 +23,12 @@ export async function GET() {
                 selectedCharacters,
                 assignedParticipants,
                 totalParticipants: participants.length,
+                fullDetails: participants.map(p => ({
+                    name: p.name,
+                    character: p.character,
+                    assignedTo: p.assignedTo,
+                    email: p.email
+                }))
             },
         });
     } catch (error) {
