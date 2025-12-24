@@ -67,14 +67,18 @@ export async function POST(request: NextRequest) {
             }
         }
 
-        // Create new participant
-        const participant = await Participant.create({
-            name,
-            email,
-            character,
-            isDemoMode: isDemoMode || false,
-            selectedAt: new Date(),
-        });
+        // Update or create participant
+        const participant = await Participant.findOneAndUpdate(
+            { name, isDemoMode: isDemoMode || false },
+            {
+                email,
+                character,
+                selectedAt: new Date(),
+                // Reset assignment if they re-select a character
+                assignedTo: undefined
+            },
+            { upsert: true, new: true, runValidators: true }
+        );
 
         return NextResponse.json({
             success: true,
@@ -88,12 +92,7 @@ export async function POST(request: NextRequest) {
     } catch (error: any) {
         console.error('Error selecting character:', error);
         return NextResponse.json(
-            {
-                success: false,
-                error: 'Failed to select character',
-                details: error.message,
-                stack: error.stack
-            },
+            { success: false, error: 'Failed to select character' },
             { status: 500 }
         );
     }
