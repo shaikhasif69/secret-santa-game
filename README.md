@@ -1,6 +1,6 @@
 # 🎅 Secret Santa Game
 
-A fun, interactive Secret Santa web application built with Next.js for Christmas 2024! Perfect for friend groups to organize a Secret Santa gift exchange with character selection, games, and automated email notifications.
+A fun, interactive Secret Santa web application built with Next.js for Christmas 2025! Perfect for friend groups to organize a Secret Santa gift exchange with character selection, games, and automated email notifications.
 
 ## ✨ Features
 
@@ -65,15 +65,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Game Logic:
 - Each player is assigned someone from the remaining pool
 - As people play, the pool shrinks (but players don't see this)
-- Special rule: Asif and Mehreen are always paired together 💑
+- Special rule: Asif and MayRin are always paired together 💑
 - Email sent immediately with assignment details
 
 ## 👥 Participants
 
 - Asif
-- Mehreen
-- Tahir
-- Simran
+- MayRin
+- Taher
+- Simi Ran
 - Sobia
 
 ## 🎨 Project Structure
@@ -132,4 +132,4 @@ MIT
 
 ## 🎄 Merry Christmas!
 
-Built with ❤️ for Christmas 2024
+Built with ❤️ for Christmas 2025

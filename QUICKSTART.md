@@ -2,7 +2,7 @@
 
 ## ✅ Everything is Ready!
 
-Your Secret Santa game is fully configured and ready to use for Christmas 2024!
+Your Secret Santa game is fully configured and ready to use for Christmas 2025!
 
 ---
 
@@ -53,19 +53,19 @@ Your Secret Santa game is fully configured and ready to use for Christmas 2024!
 ## 👥 Participants
 
 1. **Asif** (you)
-2. **Mehreen** (your fiancé)
-3. **Tahir**
-4. **Simran**
+2. **MayRin** (your fiancé)
+3. **Taher**
+4. **Simi Ran**
 5. **Sobia**
 
 ---
 
 ## 💑 Special Feature (Secret!)
 
-You and Mehreen are **always paired together**! 
+You and MayRin are **always paired together**! 
 
-- When you play → You get Mehreen
-- When Mehreen plays → She gets you
+- When you play → You get MayRin
+- When MayRin plays → She gets you
 - Others get random assignments from available pool
 - Nobody else knows this! 😉
 
@@ -94,7 +94,7 @@ Each participant will receive a beautiful HTML email with:
 4. Choose any character
 5. Click "Continue to Game"
 6. Spin the wheel!
-7. You should get "Mehreen"! 💑
+7. You should get "MayRin"! 💑
 
 ---
 
@@ -174,7 +174,7 @@ The app is fully responsive and works perfectly on:
    - Pool starts with all 5 participants
    - As people play, assigned participants are removed from pool
    - You can't get yourself
-   - Asif ↔ Mehreen always paired
+   - Asif ↔ MayRin always paired
    - Others get random from available pool
 
 3. **Email Confirmation**
@@ -208,4 +208,4 @@ The app is fully responsive and works perfectly on:
 
 Have fun with your Secret Santa game! 🎄✨
 
-Built with ❤️ for Christmas 2024
+Built with ❤️ for Christmas 2025

@@ -8,9 +8,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Secret Santa 2024 🎅 | Christmas Gift Exchange Game",
+  title: "Secret Santa 2025 🎅 | Christmas Gift Exchange Game",
   description: "The most magical way to organize your Secret Santa! Choose your character, spin the wheel, and discover who you're gifting to this Christmas!",
-  keywords: ["secret santa", "christmas", "gift exchange", "holiday game", "christmas 2024"],
+  keywords: ["secret santa", "christmas", "gift exchange", "holiday game", "christmas 2025"],
 };
 
 export default function RootLayout({
