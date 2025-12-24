@@ -17,7 +17,12 @@ export interface EmailOptions {
 }
 
 export async function sendEmail({ to, subject, html }: EmailOptions) {
+  console.log(`Starting sendEmail to: ${to}`);
   try {
+    // Verify connection configuration
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
+
     const info = await transporter.sendMail({
       from: process.env.EMAIL_FROM,
       to,

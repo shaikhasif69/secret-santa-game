@@ -88,17 +88,25 @@ export async function POST(request: NextRequest) {
 
         // Send email in real mode
         if (!isDemoMode && participant.email) {
+            console.log(`Attempting to send email to ${participant.email} for ${name}...`);
             try {
                 const emailHtml = getSecretSantaEmailTemplate(name, assignedTo);
-                await sendEmail({
+                const emailResult = await sendEmail({
                     to: participant.email,
                     subject: '🎅 Your Secret Santa Assignment!',
                     html: emailHtml,
                 });
+
+                if (emailResult.success) {
+                    console.log(`Email successfully sent to ${participant.email}`);
+                } else {
+                    console.error(`Email failed to send to ${participant.email}:`, emailResult.error);
+                }
             } catch (emailError) {
-                console.error('Error sending email:', emailError);
-                // Don't fail the request if email fails, just log it
+                console.error('Error in email sending process:', emailError);
             }
+        } else {
+            console.log(`Skipping email sending: isDemoMode=${isDemoMode}, email=${participant.email}`);
         }
 
         return NextResponse.json({
