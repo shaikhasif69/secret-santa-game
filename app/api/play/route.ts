@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
         let assignedTo: string;
 
-        // Special pairing: Asif <-> Mehreen
+        // Special pairing: Asif <-> MayRin
         if (SPECIAL_PAIRINGS[name]) {
             assignedTo = SPECIAL_PAIRINGS[name];
         } else {
@@ -87,9 +87,18 @@ export async function POST(request: NextRequest) {
 
             const alreadyAssigned = assignedParticipants.map((p) => p.assignedTo);
 
-            // Build available pool: all participants except current player and already assigned
+            // Build list of reserved targets from special pairings
+            const reservedTargets = Object.values(SPECIAL_PAIRINGS);
+
+            // Build available pool: 
+            // 1. Not the current player
+            // 2. Not already assigned in the database
+            // 3. Not a reserved target for someone else
             const availablePool = PARTICIPANTS.filter(
-                (p) => p !== name && !alreadyAssigned.includes(p)
+                (p) =>
+                    p !== name &&
+                    !alreadyAssigned.includes(p) &&
+                    !reservedTargets.includes(p)
             );
 
             if (availablePool.length === 0) {
