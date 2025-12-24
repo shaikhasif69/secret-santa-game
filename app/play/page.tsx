@@ -193,8 +193,8 @@ function PlayPageContent() {
 
                                         {/* Assigned Person */}
                                         <div>
-                                            <p className="text-2xl text-slate-300 mb-4">
-                                                You are Secret Santa for:
+                                            <p className="text-2xl text-slate-300 mb-4 font-semibold">
+                                                You&apos;re now responsible to gift something to:
                                             </p>
                                             <motion.h2
                                                 className="text-6xl md:text-8xl font-bold gradient-text"

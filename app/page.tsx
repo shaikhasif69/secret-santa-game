@@ -54,7 +54,7 @@ export default function HomePage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Secret Santa 2024
+            Secret Santa 2025
           </motion.h1>
 
           {/* Subtitle */}
@@ -142,7 +142,7 @@ export default function HomePage() {
               <li>🎭 Pick your favorite Christmas character</li>
               <li>🎰 Spin the magical wheel of destiny</li>
               <li>🤫 Keep your assignment TOP SECRET!</li>
-              <li>🎄 Exchange gifts on Christmas Day</li>
+              <li>🎄 Revealed on 25th Dec 2025</li>
               <li>😄 Most importantly: Have FUN with it!</li>
             </ul>
           </motion.div>
@@ -178,7 +178,7 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8 }}
           >
-            <p>Built with ❤️ for Christmas 2024 • Merry Christmas! 🎄</p>
+            <p>Built with ❤️ for Christmas 2025 • Merry Christmas! 🎄</p>
           </motion.div>
         </div>
       </section>

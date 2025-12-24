@@ -68,19 +68,11 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
     ],
   };
 
-  const ideas = giftIdeas[assignedTo] || [
-    '🎁 Something thoughtful and personal',
-    '💝 A gift that shows you care',
-    '✨ Something that will make them smile',
+  const ideas = [
+    '🎁 Something thoughtful and personal ',
+    '✨ A gift that brings a smile ',
+    '🎄 A small holiday surprise!',
   ];
-
-  const funFacts: Record<string, string> = {
-    'Asif': 'Fun fact: Tech enthusiasts love practical gifts they can use daily!',
-    'Mehreen': 'Fun fact: You can never go wrong with something that smells amazing!',
-    'Tahir': 'Fun fact: The best gifts are ones that match their hobbies!',
-    'Simran': 'Fun fact: Creative souls appreciate handmade or artistic gifts!',
-    'Sobia': 'Fun fact: Self-care gifts are always a hit during the holidays!',
-  };
 
   return `
     <!DOCTYPE html>
@@ -156,21 +148,13 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
           margin: 10px 0;
           font-size: 16px;
         }
-        .fun-fact {
-          background: #dbeafe;
-          border-radius: 12px;
-          padding: 15px 20px;
-          margin: 20px 0;
-          font-style: italic;
-          color: #1e40af;
-          text-align: center;
-        }
         .secret-reminder {
           background: #fce7f3;
           border-radius: 12px;
           padding: 20px;
           text-align: center;
           margin: 25px 0;
+          border-left: 5px solid #be185d;
         }
         .secret-reminder h3 {
           color: #be185d;
@@ -179,6 +163,8 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
         .secret-reminder p {
           color: #9d174d;
           margin: 0;
+          font-weight: bold;
+          font-size: 18px;
         }
         .footer {
           text-align: center;
@@ -201,7 +187,7 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
       <div class="container">
         <div class="header">
           <div class="emoji-row">🎄✨🎅✨🎄</div>
-          <h1>Secret Santa Assignment!</h1>
+          <h1>Secret Santa 2025!</h1>
         </div>
         
         <p class="greeting">
@@ -212,35 +198,30 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
         <div class="big-emoji">🎁</div>
         
         <p style="text-align: center; font-size: 18px; color: #666;">
-          Your mission (if you choose to accept it) is to be the Secret Santa for:
+          You're now responsible to gift something to:
         </p>
         
         <div class="assigned-box">
-          🎁 ${assignedTo} 🎁
+          🎄 ${assignedTo} 🎄
         </div>
         
         <div class="gift-ideas">
-          <h3>💡 Gift Ideas for ${assignedTo}:</h3>
+          <h3>💡 Gift Ideas:</h3>
           <ul>
             ${ideas.map(idea => `<li>${idea}</li>`).join('')}
           </ul>
         </div>
         
-        <div class="fun-fact">
-          💭 ${funFacts[assignedTo] || 'Fun fact: The best gift is one given with love!'}
-        </div>
-        
         <div class="secret-reminder">
-          <h3>🤫 TOP SECRET!</h3>
+          <h3>🤫 SHHH... IT'S A SECRET!</h3>
           <p>
-            Remember, you're a <strong>SECRET</strong> Santa!<br>
-            Don't tell anyone who you got - that's the fun part! 🎭
+            Keep this TOP SECRET until 25th Dec 2025! 🎭
           </p>
         </div>
         
         <div class="footer">
           <div class="emoji-row">🎅🦌🎄⛄🎁</div>
-          <p><strong>Gift Exchange:</strong> Christmas Day! 🎄</p>
+          <p><strong>Reveal Date:</strong> Christmas Day 2025! 🎄</p>
           <p style="font-size: 12px; color: #999; margin-top: 20px;">
             Happy shopping and Merry Christmas! 🎊<br>
             May your holidays be filled with joy and laughter!
