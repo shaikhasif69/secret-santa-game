@@ -14,7 +14,7 @@ const ParticipantSchema = new mongoose.Schema<IParticipant>(
         name: {
             type: String,
             required: true,
-            enum: ['Asif', 'Mehreen', 'Tahir', 'Simran', 'Sobia'],
+            enum: ['Asif', 'MayRin', 'Taher', 'Simi Ran', 'Sobia'],
         },
         email: {
             type: String,
@@ -27,7 +27,7 @@ const ParticipantSchema = new mongoose.Schema<IParticipant>(
         },
         assignedTo: {
             type: String,
-            enum: ['Asif', 'Mehreen', 'Tahir', 'Simran', 'Sobia'],
+            enum: ['Asif', 'MayRin', 'Taher', 'Simi Ran', 'Sobia'],
         },
         selectedAt: {
             type: Date,

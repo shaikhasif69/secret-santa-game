@@ -1,4 +1,4 @@
-export const PARTICIPANTS = ['Asif', 'Mehreen', 'Tahir', 'Simran', 'Sobia'] as const;
+export const PARTICIPANTS = ['Asif', 'MayRin', 'Taher', 'Simi Ran', 'Sobia'] as const;
 
 export type ParticipantName = typeof PARTICIPANTS[number];
 
@@ -12,8 +12,8 @@ export const CHARACTERS = [
 
 export type CharacterId = typeof CHARACTERS[number]['id'];
 
-// Special pairing: Asif <-> Mehreen
+// Special pairing: Asif <-> MayRin
 export const SPECIAL_PAIRINGS: Record<string, string> = {
-    'Asif': 'Mehreen',
-    'Mehreen': 'Asif',
+    'Asif': 'MayRin',
+    'MayRin': 'Asif',
 };

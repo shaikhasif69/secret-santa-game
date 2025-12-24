@@ -156,7 +156,7 @@ export default function HomePage() {
           >
             <h2 className="text-3xl font-bold text-white mb-6">Our Christmas Crew</h2>
             <div className="flex flex-wrap justify-center gap-4 text-lg">
-              {['Asif', 'Mehreen', 'Tahir', 'Simran', 'Sobia'].map((name, index) => (
+              {['Asif', 'MayRin', 'Taher', 'Simi Ran', 'Sobia'].map((name, index) => (
                 <motion.div
                   key={name}
                   className="px-6 py-3 rounded-full glass border-2 border-white/30 text-white font-semibold"

@@ -50,19 +50,19 @@ export function getSecretSantaEmailTemplate(name: string, assignedTo: string): s
       '🎧 Premium headphones or earbuds',
       '☕ A fancy coffee mug with a witty quote',
     ],
-    'Mehreen': [
+    'MayRin': [
       '💄 A luxurious skincare or makeup set',
       '📖 A bestselling novel or journal',
       '🌸 Scented candles or aromatherapy set',
       '👜 A stylish accessory or bag',
     ],
-    'Tahir': [
+    'Taher': [
       '🎮 Gaming accessories or gift card',
       '👟 Cool sneakers or sportswear',
       '🎵 Music merchandise or vinyl records',
       '🍫 A gourmet chocolate hamper',
     ],
-    'Simran': [
+    'Simi Ran': [
       '🎨 Art supplies or creative kit',
       '📸 A cute polaroid camera or film',
       '🧣 A cozy winter scarf or blanket',
