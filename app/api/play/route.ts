@@ -40,15 +40,37 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Check if already assigned
+        // Check if already assigned - if so, we'll re-send the email
         if (participant.assignedTo && !isDemoMode) {
-            return NextResponse.json(
-                {
-                    success: true,
-                    data: { assignedTo: participant.assignedTo },
-                    message: 'You have already been assigned',
+            console.log(`Participant ${name} already assigned to ${participant.assignedTo}. Re-sending email...`);
+            if (participant.email) {
+                try {
+                    const emailHtml = getSecretSantaEmailTemplate(name, participant.assignedTo);
+                    const emailResult = await sendEmail({
+                        to: participant.email,
+                        subject: '🎅 Your Secret Santa Assignment!',
+                        html: emailHtml,
+                    });
+
+                    if (emailResult.success) {
+                        console.log(`Re-send: Email successfully sent to ${participant.email}`);
+                    } else {
+                        console.error(`Re-send: Email failed to send to ${participant.email}:`, emailResult.error);
+                    }
+                } catch (emailError) {
+                    console.error('Error in re-sending email process:', emailError);
                 }
-            );
+            }
+
+            return NextResponse.json({
+                success: true,
+                data: {
+                    name,
+                    assignedTo: participant.assignedTo,
+                    emailSent: true,
+                },
+                message: 'Your assignment has been re-sent to your email!',
+            });
         }
 
         let assignedTo: string;
